@@ -1,0 +1,13 @@
+
+// 设计图宽度是750
+$design-width: 750;
+ 
+@function px2rem( $px )
+{
+  @return $px/$design-width*10 + rem; //对应js 
+}
+
+
+// @function px2rem($px, $base-font-size: 75px) {
+//     @return ($px / $base-font-size) * 1rem;
+//   }
