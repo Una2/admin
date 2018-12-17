@@ -1,9 +1,9 @@
 <template>
   <div class="about">
     <h1>This is an about page</h1>
-    <router-link to="/pageone">pageone</router-link>
+    <router-link :to="{path:'/pageone',params:{data:'pageone'},query:{'data':'pageone'}}" >pageone</router-link>
     <span>||||||||||</span>
-    <router-link to="/pagetwo">pagetwo</router-link>
+    <router-link :to="{name:'pagetwo',query:{data:'pagetwo'},params:{'data':'pagetwo'}}">pagetwo</router-link>
     <router-view></router-view>
     <!-- <myCanvas :dotsNum="dotsNum" :isColor="false" :lineColor="lineColor" :roundColor="roundColor"></myCanvas> -->
   </div>
@@ -29,6 +29,13 @@ export default {
 </script>
 <style lang="scss" scoped>
 // @import './xx.css';
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
 .canvas {
   z-index: 1 !important;
 }

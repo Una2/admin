@@ -1,11 +1,16 @@
 <template>
   <div id="app">
     <div id="nav">
+      <i class="iconfont">&#xe627;</i>
+      <i class="iconfont icon-ascend"></i>
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
+    <transition name="slide-left">
     <router-view/>
+    </transition>
     <Button @click="modal10 = true">Vertical center</Button>
+    
     <Modal
         title="Title"
         v-model="modal10"
@@ -15,6 +20,7 @@
         <p>Content of dialog</p>
         <p>Content of dialog</p>
     </Modal>
+     <a href="javascript:;" rel="external nofollow" @click="showtips">显示</a>
       <v-alert  :tips-options="tipsOptions" ref="dialog"  @yes="yes" v-cloak></v-alert>
   </div>
 </template>
@@ -27,7 +33,7 @@ export default {
     return {
       modal10: false,
       showAlert: true,
-       tipsOptions: {
+      tipsOptions: {
         title: "弹窗",
         text: "写了一个弹窗组件",
         showbtn: true, //默认true
@@ -42,8 +48,8 @@ export default {
   methods: {
     // 监听从组件内传递出来的事件
     yes(args) {
-      // console.log( args );
-      alert(JSON.stringify(args));
+      console.log( args );
+      // alert(JSON.stringify(args));
     },
     // 显示tips
     showtips() {
@@ -52,7 +58,9 @@ export default {
       $(".modal_box").show();
     }
   },
-  mounted() {}
+  mounted() {
+      // this.$refs.dialog.showTips();    
+  }
 };
 </script>
 <style lang="scss">
@@ -70,6 +78,21 @@ body {
   color: #2c3e50;
   width: 100%;
   height: 100%;
+  //渐变动效
+  .slide-left-enter-active,
+  .slide-left-leave-active {
+    transition: all 0.1s ease-in;
+    opacity: 1;
+  }
+  .slide-left-enter,
+  .slide-left-leave-active {
+    opacity: 0;
+  }
+
+  //左滑动效
+  // .slide-left-enter-active {
+  //   animation: slideLeft .3s;
+  // }
 }
 #nav {
   padding: 30px;
@@ -92,5 +115,15 @@ body {
 
 [v-cloak] {
   display: none;
+}
+@keyframes slideLeft {
+  from {
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
 }
 </style>

@@ -61,7 +61,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
      npm install postcss-pxtorem --save-dev
 
      "postcss-px2rem-exclude": "0.0.6",
-
+6、富文本编辑器
+   npm install wangeditor@2.1.23 --save
 
      
 -->

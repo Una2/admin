@@ -15,7 +15,7 @@ module.exports = {
   //基本路径
   baseUrl: "./",
   //输出文件目录
-  outputDir: "vue-cli3.x-configure",
+  // outputDir: "vue-cli3.x-configure",
   // eslint-loader 是否在保存的时候检查
   lintOnSave: true,
   //放置生成的静态资源 (js、css、img、fonts) 的 (相对于 outputDir 的) 目录。
@@ -54,7 +54,7 @@ module.exports = {
         minRatio: 0.8
       }),
       //	Webpack包文件分析器(https://github.com/webpack-contrib/webpack-bundle-analyzer)
-      new BundleAnalyzerPlugin()
+      // new BundleAnalyzerPlugin()
     ];
     //开发环境
     let pluginsDev = [

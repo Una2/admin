@@ -45,7 +45,6 @@ export default {
           showbtn: tips.showbtn || true,
           btnText: tips.btnText || "确定"
         };
-        // console.log(tips);
         return tips;
       }
     }
@@ -61,9 +60,9 @@ export default {
       $("body").css("overflow","auto");
     },
 
-    yes: function() {
+    yes() {
       this.show = false;
-      this.$emit("yes", { name: "wenzi", age: 111 }); // 触发yes事件
+      this.$emit("yes", this.tips); // 触发yes事件
       $(".modal_box").hide();
       $("body").css("overflow","auto");
     },
