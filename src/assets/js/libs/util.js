@@ -2,7 +2,41 @@ import Vue from "vue";
 import { JSEncrypt } from "jsencrypt";
 let je = new JSEncrypt();
 
-const util = {};
+const util = {
+   //封装过期控制代码
+   setItem(key, value, expired) {
+    /*
+     * set 存储方法
+     * @ param {String} key 键
+     * @ param {String} value 值，
+     * @ param {String} expired 过期时间，以分钟为单位，非必须
+     * @ qzz
+     */
+    var source = window.localStorage;
+    source[key] = JSON.stringify(value);
+    if (expired) {
+      source[key+'__expires__'] = Date.now() + 1000 * 60 * expired;
+    }
+    return value;
+  }, 
+  getItem(key) {
+    /*
+     * get 获取方法
+     * @ param {String} key 键
+     * @ param {String} expired 存储时为非必须字段，所以有可能取不到，默认为 Date.now+1
+     * @ 由@IT·平头哥联盟-首席填坑官∙苏南 分享
+     */
+    var source = window.localStorage,
+      expired = source[key + "__expires__"] || Date.now + 1;
+    var now = Date.now();
+    if (now >= expired) {
+     localStorage.removeItem(key);
+      return;
+    }
+    var value = source[key] ? JSON.parse(source[key]) : source[key];
+    return value;
+  },
+};
 util.title = function(title) {
   title = title ? title : "智能客服管理系统";
   window.document.title = title;

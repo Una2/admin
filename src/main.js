@@ -13,15 +13,25 @@ import templates from './assets/vue-templates';
 // import './assets/css/reset.css'
 // import './assets/css/border.css'
 // import Editor from 'wangeditor'
-import E from 'wangeditor'
+import E from 'wangeditor';
 
 // import 'wangeditor/release/wangEditor.min.css'
+// import mui from './assets/mui/dist/js/mui.min.js'
+// import './assets/mui/dist/css/mui.min.css'y
+// Vue.prototype.$mui = mui;
 
 
 import util from "./assets/js/libs/util.js";
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+
+
+import mandMobile from 'mand-mobile'
+import 'mand-mobile/lib/mand-mobile.css'
+
+Vue.use(mandMobile)
+
 Vue.config.productionTip = false;
 // Vue.use(iview);
 const env = process.env.NODE_ENV === "production" ? true : false; //生产环境和开发环境
